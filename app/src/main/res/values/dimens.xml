@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_data_text_view">50dp</dimen>
+    <dimen name="right_padding_text_view">5dp</dimen>
+    <dimen name="left_padding_text_view">5dp</dimen>
+    <dimen name="title_text_view_size">15dp</dimen>
+    <dimen name="data_text_view_size">20dp</dimen>
+</resources>

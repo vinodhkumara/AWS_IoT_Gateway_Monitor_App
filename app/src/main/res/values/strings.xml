@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MBIT IoT Gateway Monitor</string>
+    <string name="statistics_screen">Statistics</string>
+
+    <string name="sub_topic1">pub/cloud/test</string>
+    <string name="sub_topic2">pub/867501010065372/temp</string>
+    <string name="sub_topic3">pub/default/temp</string>
+    <string name="sub_topic4">pub/867144030101115/temp</string>
+    <string name="sub_topic5">pub/imei3/temp</string>
+
+    <string name="pub_topic1">sub/cloud/test</string>
+    <string name="pub_topic2">sub/867501010065372</string>
+    <string name="pub_topic3">sub/default</string>
+    <string name="pub_topic4">pub/867144030101115/temp</string>
+    <string name="pub_topic5">sub/imei3</string>
+
+
+    <string-array name="subscribe_topics">
+        <item>@string/sub_topic1</item>
+        <item>@string/sub_topic2</item>
+        <item>@string/sub_topic3</item>
+        <item>@string/sub_topic4</item>
+        <item>@string/sub_topic5</item>
+    </string-array>
+
+    <string-array name="publish_topics">
+        <item>@string/pub_topic1</item>
+        <item>@string/pub_topic2</item>
+        <item>@string/pub_topic3</item>
+        <item>@string/pub_topic4</item>
+        <item>@string/pub_topic5</item>
+    </string-array>
+
+</resources>

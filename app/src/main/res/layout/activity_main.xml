@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" ></RelativeLayout> -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/iot_app_background"
+        android:padding="3dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/conn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/iot_text_color"
+                    android:text="Connection Status:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/iot_text_color"
+                    android:text="Disconnected" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/conn_btn_layout"
+                android:layout_below="@id/conn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnConnect"
+                    android:layout_gravity="left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:onClick="connectClick"
+                    android:text="Connect"
+                    android:textColor="@color/iot_button_text_color"
+                    android:background="@drawable/iot_button"/>
+
+                <Button
+                    android:id="@+id/btnDisconnect"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="right"
+                    android:onClick="disconnectClick"
+                    android:text="Disconnect"
+                    android:textColor="@color/iot_button_text_color"
+                    android:background="@drawable/iot_button"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/subscribe_layout"
+                android:layout_below="@id/conn_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Subscribe Topic:"
+                    android:textSize="15dp"
+                    android:textColor="@color/iot_text_color"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:id="@+id/sub_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/subscribe__btn_layout"
+                android:layout_below="@id/subscribe_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnSubscribe"
+                    android:layout_gravity="left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:onClick="subscribeClick"
+                    android:text="Subscribe"
+                    android:textColor="@color/iot_button_text_color"
+                    android:background="@drawable/iot_button"/>
+
+                <Button
+                    android:id="@+id/btnUnSubscribe"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_gravity="right"
+                    android:onClick="unSubscribeClick"
+                    android:text="UnSubscribe"
+                    android:textColor="@color/iot_button_text_color"
+                    android:background="@drawable/iot_button"/>
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/data_display_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_data_text_view"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:layout_gravity="left"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:text="PRESSURE"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/title_text_view_size"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textStyle="bold"></TextView>
+                        <TextView
+                            android:id="@+id/pressure_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="right"
+                            android:text="None"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/data_text_view_size"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_data_text_view"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="left"
+                            android:text="ACCELEROMETER"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/title_text_view_size"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/accel_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="right"
+                            android:text="None"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/iot_text_color"
+                            android:textSize="@dimen/data_text_view_size"
+                            android:background="@drawable/iot_text_border"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_data_text_view"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="left"
+                            android:text="ALTITUDE"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/title_text_view_size"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/altitude_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="right"
+                            android:text="None"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/data_text_view_size"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_data_text_view"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="left"
+                            android:text="TEMPERATURE"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/title_text_view_size"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/temp_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="right"
+                            android:text="None"
+                            android:textColor="@color/iot_text_color"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/data_text_view_size"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_data_text_view"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="left"
+                            android:text="HUMIDITY"
+                            android:textColor="@color/iot_text_color"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/title_text_view_size"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/humidity_text"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/left_padding_text_view"
+                            android:layout_weight="5"
+                            android:layout_gravity="right"
+                            android:gravity="center_vertical"
+                            android:text="None"
+                            android:textColor="@color/iot_text_color"
+                            android:background="@drawable/iot_text_border"
+                            android:textSize="@dimen/data_text_view_size"
+                            android:textStyle="bold"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/publish_layout"
+            android:layout_below="@id/data_display_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Publish Topic:"
+                android:textSize="15dp"
+                android:textColor="@color/iot_text_color"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/pub_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/txtMessage"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Enter the message"
+                android:gravity="center_vertical" />
+
+            <Button
+                android:id="@+id/btnPublish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:onClick="publishClick"
+                android:text="Publish"
+                android:textColor="@color/iot_button_text_color"
+                android:background="@drawable/iot_button"/> -->
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:onClick="historyClick"
+                android:text="Statistics"
+                android:textColor="@color/iot_button_text_color"
+                android:background="@drawable/iot_button"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
